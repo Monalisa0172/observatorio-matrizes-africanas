@@ -1,20 +1,16 @@
 import styled from 'styled-components';
 
-
 export const HeaderContainer = styled.header`
   width: 100%;
   height: ${({ theme }) => theme.layout.header.height};
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   position: relative;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   background: transparent;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 `;
 
 export const Overlay = styled.div`
@@ -22,8 +18,8 @@ export const Overlay = styled.div`
   height: 100%;
 
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 
   background: linear-gradient(
     90deg,
@@ -37,6 +33,8 @@ export const Content = styled.div`
   width: ${({ theme }) => theme.layout.container.width};
   max-width: ${({ theme }) => theme.layout.container.maxWidth};
 
+  height: 100%;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -45,70 +43,29 @@ export const Content = styled.div`
 export const Title = styled.h1`
   margin: 0;
 
-  font-family: ${({ theme }) => theme.typography.fontFamily};
+  color: ${({ theme }) => theme.colors.secondary};
+
+  font-family: ${({ theme }) => theme.typography.fontFamily.body};
+
   font-size: ${({ theme }) => theme.typography.fontSize.lg};
+
   font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
 
   letter-spacing: 2px;
+
   text-transform: uppercase;
 
-  color: ${({ theme }) => theme.colors.secondary};
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    font-size: ${({ theme }) => theme.typography.fontSize.md};
 
-  max-width: 600px;
+    max-width: 240px;
+  }
 `;
 
 export const Navigation = styled.nav`
   display: flex;
   align-items: center;
-  gap: 40px;
-`;
-
-export const Menu = styled.ul`
-  display: flex;
-  align-items: center;
-  gap: 28px;
-
-  margin: 0;
-  padding: 0;
-
-  list-style: none;
-`;
-
-export const MenuItem = styled.li`
-  position: relative;
-
-  font-family: ${({ theme }) => theme.typography.fontFamily};
-  font-size: ${({ theme }) => theme.typography.fontSize.sm};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
-
-  color: ${({ theme }) => theme.colors.white};
-
-  cursor: pointer;
-
-  transition: ${({ theme }) => theme.transitions.default};
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.secondary};
-  }
-
-  /* underline elegante no hover */
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-
-    width: 0%;
-    height: 2px;
-
-    background: ${({ theme }) => theme.colors.secondary};
-
-    transition: ${({ theme }) => theme.transitions.default};
-  }
-
-  &:hover::after {
-    width: 100%;
-  }
+  gap: 24px;
 `;
 
 export const LogoContainer = styled.div`
@@ -116,30 +73,31 @@ export const LogoContainer = styled.div`
   height: 52px;
 
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255,255,255,.08);
 
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255,255,255,.15);
 
   transition: ${({ theme }) => theme.transitions.default};
 
   cursor: pointer;
 
-  &:hover {
+  &:hover{
     transform: scale(1.05);
-    border-color: ${({ theme }) => theme.colors.secondary};
+
+    border-color:${({ theme }) => theme.colors.secondary};
   }
 `;
 
 export const Logo = styled.img`
-    width: 42px;
-    height: 42px;
+  width: 42px;
+  height: 42px;
 
-    object-fit: contain;
+  object-fit: contain;
 
-    transition: ${({ theme }) => theme.transitions.default};
+  transition: ${({ theme }) => theme.transitions.default};
 `;
